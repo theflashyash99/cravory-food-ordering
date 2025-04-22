@@ -55,10 +55,10 @@ const Body = () => {
                 <RestaurantCard name="KFC" cuisine="Burger, North Indian, Asian" star="4.4 stars" time="38 min" img="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2024/12/9/e38f9b01-4ba1-41ee-9478-bd7792e1f424_569370.JPG" />
 
                 <RestaurantCard name="Theobroma" cuisine="Bakery, Desserts
-Janakpuri" star="4.6 stars" time="40 min" img="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2025/4/9/361ac1d9-7094-40df-b3b5-0afae4d89bf4_337439.jpg" />
+                 Janakpuri" star="4.6 stars" time="40 min" img="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2025/4/9/361ac1d9-7094-40df-b3b5-0afae4d89bf4_337439.jpg" />
 
                 <RestaurantCard name="McDOnald'" cuisine="American
-Tilak Nagar" star="4.2 star" time="38 min" img="  https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2025/1/9/199a7c7b-d3f0-4d1e-a1cd-60be14ec5020_254117.JPG" />
+                   Tilak Nagar" star="4.2 star" time="38 min" img="  https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2025/1/9/199a7c7b-d3f0-4d1e-a1cd-60be14ec5020_254117.JPG" />
 
                 <RestaurantCard name="Wendy's Burgers" cuisine="Burgers, American, Fast Food, Snacks" star="4.4 stars" time="38 min" img="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2025/1/11/2f038f87-b647-4612-8c1a-ee6c9e1ddeb4_12557.JPG" />
 
@@ -104,11 +104,14 @@ Tilak Nagar" star="4.2 star" time="38 min" img="  https://media-assets.swiggy.co
                 
                 
 
-                </div>
+          </div>
 
-                </div>
+    
+    
+    </div>
     );
 }
+
 
 const AppLayout = () => {
     return (
