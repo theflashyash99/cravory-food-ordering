@@ -85,10 +85,29 @@ Tilak Nagar" star="4.2 star" time="38 min" img="  https://media-assets.swiggy.co
                 <RestaurantCard name="Dosa Hub" cuisine="Burger, North Indian, Asian" star="4.4 stars" time="38 min" img="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/ff8ky1slxu751qpowukh" />
 
                 <RestaurantCard name="Bangla Sweet House" cuisine="Burger, North Indian, Asian" star="4.4 stars" time="38 min" img="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2025/3/12/8c8838cb-3437-475b-903a-26057b2105df_534652%20(1).jpg"/>
+                
+                <RestaurantCard name="Roshan Di Kulfi" cuisine="Burger, North Indian, Asian" star="4.4 stars" time="38 min" img="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/crl0impfugnw66bipiqt" />
+
+                <RestaurantCard name="Karim's" cuisine="Burger, North Indian, Asian" star="4.4 stars" time="38 min" img="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/t55bmgihr0woug1t6xiu" />
+
+            
+
+                <RestaurantCard name="Creme Castle - Cakes And Desserts" cuisine="Burger, North Indian, Asian" star="4.4 stars" time="38 min" img="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2025/3/18/98b5bb66-d879-4586-b6f2-207e3e757856_846389.jpg" />
+
+                <RestaurantCard name="Gianis - Ice Cream, Shakes & Sundaes" cuisine="Burger, North Indian, Asian" star="4.4 stars" time="38 min" img="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/2365e2117e199c2b9a2cfa643c31b05c"/>
+                
+
+                <RestaurantCard name="Chaayos Chai+Snacks=Relax" cuisine="Burger, North Indian, Asian" star="4.4 stars" time="38 min" img="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2024/4/17/dfbcecfc-b380-4648-930a-b9b56b21e781_331201.JPG"/>
+
+                <RestaurantCard name="Honey & Dough" cuisine="Burger, North Indian, Asian" star="4.4 stars" time="38 min" img="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/b9f3278aa437785772e368cfe584b342"/>
+                <RestaurantCard name="Giani" cuisine="Burger, North Indian, Asian" star="4.4 stars" time="38 min" img="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/aoojcgijlsryzyeachrz"/>
+                
+                
+
                 </div>
 
-        </div>
-    )
+                </div>
+    );
 }
 
 const AppLayout = () => {
