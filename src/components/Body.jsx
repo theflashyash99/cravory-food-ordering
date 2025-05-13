@@ -1,48 +1,4 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-
-
-const Header = () => {
-    return (
-        <div className="header">
-            <div className="logo-container">
-                <img className="logo" src="https://www.logodesign.net/logo/smoking-burger-with-lettuce-3624ld.png?size=large" alt="logo" />
-            </div>
-
-            <div className="nav-items">
-                <ul>
-                    <li>Home</li>
-                    <li>About Us</li>
-                    <li>Contact Us</li>
-                    <li>Cart</li>
-                    {/* <img src={img1} alt="qw"/> // not working ++++++++++++++++++++++++++++++++++++++++ */}
-
-                </ul>
-
-            </div>
-        </div>
-    )
-
-}
-
-const style = {
-    backgroundColor: "#f0f0f0"
-};
-// using props concept------------------------------------------------------------->
-const RestaurantCard = (props) => {
-    return (
-        <div className="res-card" style={style}>
-            <img
-                className="res-logo"
-                src={props.img} alt={props.alt} />
-            <h3>{props.name}</h3>
-            <h4>{props.cuisine}</h4>
-            <h4>{props.star}</h4>
-            <h4 >{props.time}</h4>
-        </div>
-
-    )
-}
+import RestaurantCard from './RestaurantCard'
 
 const Body = () => {
     return (
@@ -111,20 +67,4 @@ const Body = () => {
     </div>
     );
 }
-
-
-const AppLayout = () => {
-    return (
-        <div className="app">
-                <Header />
-                <Body />
-
-
-
-            </div>
-
-            )
-}
-            const root = ReactDOM.createRoot(document.getElementById("root"));
-
-            root.render(<AppLayout />);
+export default Body;
