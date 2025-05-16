@@ -1,15 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import resList from "../../API file/restList";
+import shuffledResList from "../../API file/shuffledResList";
 import RestaurantCard from "./RestaurantCard";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
-  // 1. Create a state to hold the restaurant list
-  const [restaurants, setRestaurants] = useState(resList); 
+  const [restaurants, setRestaurants] = useState([]); // Initially empty
 
-  return (
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setRestaurants(shuffledResList); // Set data after 3 seconds
+    }, 2000);
+
+    return () => clearTimeout(timer); // Cleanup
+  }, []);
+
+  // // Show shimmer while loading
+  // if (restaurants.length === 0) {
+  //   return <Shimmer />;
+  // }
+
+  return restaurants.length === 0 ? (<Shimmer/>) : (
     <div className="body">
       <div className="filter">
-        {/* 2. On button click, update the state with filtered list */}
         <button
           className="filter-btn"
           onClick={() => {
@@ -22,7 +35,6 @@ const Body = () => {
       </div>
 
       <div className="res-container">
-        {/* 3. Render the current state (filtered or full list) */}
         {restaurants.map((res) => (
           <RestaurantCard
             key={res.id}
