@@ -4,10 +4,13 @@
   border: 1px solid black;
 }
 
+
 .logo {
   width: 200px;
-  /* height: 120px; */
+  height: 120px;
+  object-fit: cover;
 }
+
 
 .nav-items > ul {
   font-size: 24px;
@@ -84,4 +87,3 @@
 .search-input {
   height: 16px;
 }
-
