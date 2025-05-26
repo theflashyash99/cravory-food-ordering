@@ -3,6 +3,7 @@ import resList from "../../API file/restList"; // Original list of restaurants
 import shuffledResList from "../../API file/shuffledResList"; // Shuffled list for display
 import RestaurantCard from "./RestaurantCard"; // Component to display individual restaurant details 
 import Shimmer from "./Shimmer"; // Loading placeholder component
+import { Link } from "react-router-dom";
 
 const Body = () => {
   // State to hold the complete list of restaurants (for the filter)
@@ -77,7 +78,7 @@ const Body = () => {
       {/* Restaurant Cards Container */}
       <div className="res-container">
         {filteredRestaurants.map((res) => (
-          <RestaurantCard
+          <Link to= "/restaurant/:resId" key={res.id}><RestaurantCard
             key={res.id}
             name={res.name}
             cuisine={
@@ -88,6 +89,7 @@ const Body = () => {
             img={res.img}
             alt={res.alt}
           />
+          </Link>
         ))}
       </div>
     </div>
