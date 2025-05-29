@@ -6,7 +6,8 @@ class UserClass extends React.Component {
     this.state = {
       // this more like a object that store the state value.
       count: 1,
-      count2: 2,
+      count2: 1,
+      count3 : 34,
     };
   }
   render() {
@@ -21,6 +22,8 @@ class UserClass extends React.Component {
             this.setState({
               //  seting the state
               count: this.state.count + 1,
+              count2: this.state.count + 1,
+              // don't need to make 2 setState as it's the object format we can set any state from the same place.
             })
           }
         >

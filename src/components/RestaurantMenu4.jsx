@@ -3,6 +3,7 @@ import Shimmer from "./Shimmer";
 
 const RestaurantMenu = () => {
   const [resInfo, setresInfo] = useState(null);
+  
   useEffect(() => {
     fetchMenu();
   }, []);
