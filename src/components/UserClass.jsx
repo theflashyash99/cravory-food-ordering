@@ -5,35 +5,40 @@ class UserClass extends React.Component {
 
     this.state = {
       // this more like a object that store the state value.
-      count: 1,
-      count2: 1,
-      count3 : 34,
+      userInfo: {
+        name: "Username",
+        location: "Default",
+        avatar_url : "http://dummy-photo.com",
+      },
     };
   }
+
+  componentDidUpdate(){
+
+    console.log("Component is Updated!!!!!!!!!")
+  }
+
+  async componentDidMount() {
+    const data = await fetch("https://api.github.com/users/theflashyash99");
+
+    const json = await data.json();
+
+    console.log(json);
+
+    this.setState({
+      userInfo : json,
+    });
+  }
+
   render() {
-    const { name, location, contact } = this.props;
-    const { count, count2 } = this.state;
+    const { name,location, avatar_url } = this.state.userInfo;
+
     return (
       <div className="user-card">
-        <h1>Count: {count}</h1>
-        <button
-          className="border border-black bg-yellow-300 p-1  rounded-xl"
-          onClick={() =>
-            this.setState({
-              //  seting the state
-              count: this.state.count + 1,
-              count2: this.state.count + 1,
-              // don't need to make 2 setState as it's the object format we can set any state from the same place.
-            })
-          }
-        >
-          Count +1
-        </button>
-        <h1>Count: {count2}</h1>
-
+        <img src={avatar_url}></img>
         <h2>Name: {name} </h2>
         <h3>Location: {location}</h3>
-        <h4>Contact: {contact}</h4>
+        <h3>Contact : @theflashyash99</h3>
       </div>
     );
   }
