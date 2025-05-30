@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import resList from "../../API file/restList"; // Original list of restaurants
 import shuffledResList from "../../API file/shuffledResList"; // Shuffled list for display
-import RestaurantCard from "./RestaurantCard"; // Component to display individual restaurant details 
+import RestaurantCard from "./RestaurantCard"; // Component to display individual restaurant details
 import Shimmer from "./Shimmer"; // Loading placeholder component
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
+import DinoGame from "react-chrome-dino";
 
 const Body = () => {
   // State to hold the complete list of restaurants (for the filter)
@@ -28,6 +30,20 @@ const Body = () => {
   }, []);
 
   // Conditional rendering: show Shimmer component while data is loading
+
+  const onlineStatus = useOnlineStatus();
+
+  if (onlineStatus === false)
+    return (
+      <>
+        <h1>
+          Look like you're offline!! Please check your internet connection.
+        </h1>
+        <DinoGame />
+        
+      </>
+    );
+
   if (restaurants.length === 0) {
     return <Shimmer />;
   }
@@ -70,7 +86,7 @@ const Body = () => {
             setRestaurants(filteredList); // Update the complete list
             setFilteredRestaurants(filteredList); // Update the filtered list
           }}
-        > 
+        >
           Top Rated Restaurants
         </button>
       </div>
@@ -78,17 +94,20 @@ const Body = () => {
       {/* Restaurant Cards Container */}
       <div className="res-container">
         {filteredRestaurants.map((res) => (
-          <Link to= "/restaurant/:resId" key={res.id}><RestaurantCard
-            key={res.id}
-            name={res.name}
-            cuisine={
-              Array.isArray(res.cuisine) ? res.cuisine.join(", ") : res.cuisine
-            }
-            star={res.star}
-            time={res.time}
-            img={res.img}
-            alt={res.alt}
-          />
+          <Link to="/restaurant/:resId" key={res.id}>
+            <RestaurantCard
+              key={res.id}
+              name={res.name}
+              cuisine={
+                Array.isArray(res.cuisine)
+                  ? res.cuisine.join(", ")
+                  : res.cuisine
+              }
+              star={res.star}
+              time={res.time}
+              img={res.img}
+              alt={res.alt}
+            />
           </Link>
         ))}
       </div>
