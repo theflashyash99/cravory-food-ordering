@@ -22,6 +22,7 @@ const Header = () => {
           <li> <Link to="/about" style={{ textDecoration: 'none' }}> About Us</Link></li>
           <li> <Link to="/contact" style={{ textDecoration: 'none' }}>Contact Us </Link> </li>
           <li> <Link to="/cart" style={{ textDecoration: 'none' }}>Cart</Link> </li>
+           <li> <Link to="/grocery" style={{ textDecoration: 'none' }}>Grocery</Link> </li>
           <button
             className="loginbtn"
             onClick={() => {
