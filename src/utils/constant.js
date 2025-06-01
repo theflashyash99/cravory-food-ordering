@@ -1,1 +1,1 @@
-export const LOGO_URL = "https://www.logodesign.net/logo/smoking-burger-with-lettuce-3624ld.png?size=large";
+export const LOGO_URL = "https://static.vecteezy.com/system/resources/previews/017/628/475/non_2x/letter-c-restaurant-logo-sign-design-free-vector.jpg";

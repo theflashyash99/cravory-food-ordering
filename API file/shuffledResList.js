@@ -97,7 +97,7 @@ const shuffledResList = [
   },
   {
     id: 13,
-    name: "Creme Castle - Cakes And Desserts",
+    name: "Creme Castle - Cakes",
     cuisine: ["Burger", "North Indian", "Asian"],
     star: 5.0,
     time: "38 min",

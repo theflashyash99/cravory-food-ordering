@@ -36,10 +36,16 @@ const Body = () => {
   if (onlineStatus === false)
     return (
       <>
-        <h1>
+        <h1 className="mt-32 flex justify-center font-sans font-bold">
           Look like you're offline!! Please check your internet connection.
         </h1>
-        <DinoGame />
+        <div className="border border-solid border-black border-dotted m-16">
+        <DinoGame  />
+        
+        </div>
+        <div>
+          <h1 className="flex justify-center font-bold text-xl  mb-10"> Press Space to Play!!!</h1>
+        </div>
         
       </>
     );
@@ -47,22 +53,22 @@ const Body = () => {
   if (restaurants.length === 0) {
     return <Shimmer />;
   }
-
+ 
   return (
-    <div className="body">
+    <div className="body mt-24   ">
       {/* Filter Section */}
-      <div className="filter">
+      <div className="filter flex justify-center h-25 m-[-20px]">
         {/* Search Container */}
-        <div className="search-container">
+        <div className="search-container m-4 p-4 mb-[-110px] ">
           <input
-            className="search-input"
-            placeholder="Search here!"
+            className="search-input border border-solid border-black rounded-lg h-8  px-64 justify-start"
+            placeholder="Find your flavor..."
             type="text"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)} // Update searchText state on input change
           />
           <button
-            className="search-btn"
+            className="search-btn px-2  m-2  h-10   bg-green-200  rounded-lg  "
             onClick={() => {
               // Filter restaurants based on the search text restaurant to filter from all and setFilteredRestaurant to to set the filter value in filter
               const filteredRes = restaurants.filter(
@@ -76,10 +82,10 @@ const Body = () => {
             Search
           </button>
         </div>
-
-        {/* Top Rated Restaurants Filter */}
-        <button
-          className="filter-btn"
+        <div className="p-4 m-4 mx-[-55px] "> 
+        <div className="  bg-green-100 px-2 m-2  items-center justify-center flex rounded-lg h-10 bg-yellow-300 ">
+         <button
+          
           onClick={() => {
             // Filter restaurants with a star rating greater than 4
             const filteredList = resList.filter((res) => res.star > 4);
@@ -89,10 +95,16 @@ const Body = () => {
         >
           Top Rated Restaurants
         </button>
+        </div>
+        
+        </div>
+
+        {/* Top Rated Restaurants Filter */}
+       
       </div>
 
       {/* Restaurant Cards Container */}
-      <div className="res-container">
+      <div className="res-container flex flex-wrap  justify-center rounded-lg  ">
         {filteredRestaurants.map((res) => (
           <Link to="/restaurant/:resId" key={res.id}>
             <RestaurantCard
