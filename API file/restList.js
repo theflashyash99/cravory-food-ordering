@@ -7,6 +7,9 @@ const resList = [
     time: "90 min",
     img: "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/FOOD_CATALOG/IMAGES/CMS/2024/5/4/b6261a53-f280-459c-aa02-f84fac4587c6_5af0ca37-29be-4399-baab-19264ab4e29a.jpg",
     alt: "Meghana Food"
+    ,
+    promoted: true,
+    
   },
   {
     id: 2,
@@ -31,6 +34,8 @@ const resList = [
     star: 4.2,
     time: "38 min",
     img: "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2025/1/9/199a7c7b-d3f0-4d1e-a1cd-60be14ec5020_254117.JPG"
+     ,
+    promoted: true,
   },
   {
     id: 5,
@@ -47,6 +52,8 @@ const resList = [
     star: 4.5,
     time: "38 min",
     img: "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2025/4/21/ec8fd5f7-4573-471b-a32e-272aa84c468a_185225.jpg"
+     ,
+    promoted: true,
   },
   {
     id: 7,
@@ -95,6 +102,8 @@ const resList = [
     star: 4.4,
     time: "38 min",
     img: "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2024/5/19/8a1d8aae-63c3-4033-a8b4-5d0eac490c8f_750457.JPG"
+     ,
+    promoted: true,
   },
   {
     id: 13,
@@ -191,7 +200,8 @@ const resList = [
     star: "4.4 stars",
     time: "38 min",
     img: "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/aoojcgijlsryzyeachrz"
-  }
+  },
+  
 ];
 
 

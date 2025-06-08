@@ -9,17 +9,15 @@ const Header = () => {
   const onlineStatus = useOnlineStatus();
 
   return (
-    <div className="header fixed top-0 left-0 w-full z-50 flex justify-between bg-red-500 h-20 shadow-lg">
-      <div className="logo-container mb-auto mt-[-15px]">
+    <div className="header fixed top-0 left-0 w-full z-50 flex justify-between  bg-red-500 h-[100px] shadow-lg">
+      <div className="logo-container mb-auto mt-[-20px]">
         <Link to="/">
         
-          <img className="logo w-32 rounded-full ml-5 m-7" src={LOGO_URL} alt="logo" />
+          <img className="logo w-20 rounded-full ml-5 m-7" src={LOGO_URL} alt="logo" />
         </Link>
       </div>
 
-      <div className="flex justify-start items-end ml-[-830px] mt-[130px] text-xl text-orange-400">
-        <i>Cravory</i>
-      </div>
+     
 
       <div className="nav-items flex items-center">
         <ul className="flex p-4 m-4">

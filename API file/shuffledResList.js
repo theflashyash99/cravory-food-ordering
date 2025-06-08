@@ -6,6 +6,8 @@ const shuffledResList = [
     star: 4.1,
     time: "38 min",
     img: "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2024/12/9/e38f9b01-4ba1-41ee-9478-bd7792e1f424_569370.JPG"
+    ,
+    promoted: true,
   },
   {
     id: 2,
@@ -22,6 +24,8 @@ const shuffledResList = [
     star: 4.4,
     time: "38 min",
     img: "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/crl0impfugnw66bipiqt"
+    ,
+    promoted: true,
   },
   {
     id: 4,
@@ -54,6 +58,8 @@ const shuffledResList = [
     star: "4.4 stars",
     time: "38 min",
     img: "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/2365e2117e199c2b9a2cfa643c31b05c"
+    ,
+    promoted: true,
   },
   {
     id: 8,
@@ -70,6 +76,8 @@ const shuffledResList = [
     star: "3.1 stars",
     time: "38 min",
     img: "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/b9f3278aa437785772e368cfe584b342"
+    ,
+    promoted: true,
   },
   {
     id: 10,
@@ -102,6 +110,8 @@ const shuffledResList = [
     star: 5.0,
     time: "38 min",
     img: "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/aoojcgijlsryzyeachrz"
+    ,
+    promoted: true,
   },
   {
     id: 14,
@@ -191,6 +201,7 @@ const shuffledResList = [
     star: 4.4,
     time: "38 min",
     img: "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2025/1/13/c24cea6b-ca5b-4954-88c3-d103d64d46b5_1025727.JPG"
-  }
+  },
+   
 ];
  export default shuffledResList;
