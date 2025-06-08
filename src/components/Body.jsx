@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import resList from "../../API file/restList"; // Original list of restaurants
 import shuffledResList from "../../API file/shuffledResList"; // Shuffled list for display
 import RestaurantCard, {withPromotedLabel}  from "./RestaurantCard"; // Component to display individual restaurant details
@@ -6,6 +6,7 @@ import Shimmer from "./Shimmer"; // Loading placeholder component
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import DinoGame from "react-chrome-dino";
+import UserContext from "../utils/userContext";
 
 const Body = () => {
   // State to hold the complete list of restaurants (for the filter)
@@ -54,6 +55,8 @@ const Body = () => {
       </>
     );
 
+    const {loggedInUser , setUserName} = useContext(UserContext);
+
   if (restaurants.length === 0) {
     return <Shimmer />;
   }
@@ -61,7 +64,7 @@ const Body = () => {
   return (
     <div className="body mt-28 mb-3  ">
       {/* Filter Section */}
-      <div className="filter flex justify-center h-25 m-[-20px]">
+      <div className="filter flex justify-center h-25 m-[-20px] ">
         {/* Search Container */}
         <div className="search-container m-4 p-4">
           <input
@@ -85,7 +88,8 @@ const Body = () => {
           >
             Search
           </button>
-        </div>
+
+       </div>
         <div className="p-4 m-4 mx-[-55px] ">
           <div className="  bg-green-100 px-2 m-2  items-center justify-center flex rounded-lg h-10 bg-yellow-300 ">
             <button
@@ -99,6 +103,16 @@ const Body = () => {
               Top Rated Restaurants
             </button>
           </div>
+          <div>
+          <input
+            className="search-input border border-solid border-black rounded-lg h-8  px-6 justify-start"
+            placeholder="Change User Name"
+            type="text"
+            value={loggedInUser}
+            onChange={(e) => setUserName(e.target.value)} // Update searchText state on input change
+          />
+          </div>
+
         </div>
 
         {/* Top Rated Restaurants Filter */}
