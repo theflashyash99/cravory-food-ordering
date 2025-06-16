@@ -15,7 +15,7 @@ const FullRestaurantMenu = () => {
       </h1>
       <div className=" flex flex-col items-center">
         {categories.map((category,) => (
-          <RestaurantCategory data={category} key={category.id} />
+          <RestaurantCategory data={category} key={Math.random()} />
         ))}
       </div>
 

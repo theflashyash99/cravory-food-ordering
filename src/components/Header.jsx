@@ -4,10 +4,12 @@ import { useState , useContext } from "react";
 import About from "./About.jsx";
 import useOnlineStatus from "../utils/useOnlineStatus.jsx";
 import UserContext from "../utils/userContext.jsx";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [btnName, setbtnName] = useState("Login");
   const onlineStatus = useOnlineStatus();
+  const cartItems = useSelector((store) => store.cart.items);
 
   const {loggedInUser} = useContext(UserContext);
 
@@ -36,8 +38,8 @@ const Header = () => {
           <li className="px-4 text-white">
             <Link to="/contact">Contact Us</Link>
           </li>
-          <li className="px-4 text-white">
-            <Link to="/cart">Cart</Link>
+          <li className="px-4 text-white font-bold">
+            <Link to="/cart">Cart - ({cartItems.length} items)</Link>
           </li>
           <li className="px-4 text-white">
             <Link to="/grocery">Grocery</Link>
