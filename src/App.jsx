@@ -15,7 +15,7 @@ import appStore from "./utils/appStore";
 
 const Grocery = lazy(() => import("./components/Grocery"));
 
-const AppLayout = () => {
+const AppLayout = () => { 
   const [userName, setUserName] = useState();
 
   //authentication
