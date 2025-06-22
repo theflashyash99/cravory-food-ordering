@@ -1,22 +1,23 @@
-import { render, screen, } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import Contact from "../Contact";
-import '@testing-library/jest-dom';
+import "@testing-library/jest-dom";
 
-
-
-
-test("Should load the component in DOM" , () => {
-     
-
-    render(<Contact/>);
+describe("Contact Us Test Cases", () => {
+  test("Should load the component in DOM", () => {
+    render(<Contact />);
 
     const heading = screen.getByRole("heading");
-    const input  = screen.getAllByRole("textbox");
-
-    console.log(input.length);
-
-
     expect(heading).toBeInTheDocument();
-    // expect(input).toHaveLength(2);
 
+    const input = screen.getAllByRole("textbox");
+    console.log(input.length);
+    expect(input.length).toBe(2);
+  });
+
+  it("Should load input name inside Contact component", () => {
+    render(<Contact />);
+    const inputName = screen.getByPlaceholderText("name");
+
+    expect(inputName).toBeInTheDocument();
+  });
 });

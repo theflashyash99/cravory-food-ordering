@@ -7,7 +7,7 @@ const Contact = () => {
         <input
           type="text"
           className="border border-black p-2 m-2"
-          placeholder="Name"
+          placeholder="name"
         />
         <input
           type="text"
