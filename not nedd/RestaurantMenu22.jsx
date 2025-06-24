@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom';
 // import Shimmer from './Shimmer';
-import useRestaurantMenu from '../utils/useRestaurantMenu';
+import useRestaurantMenu from '../src/utils/useRestaurantMenu';
 import ShimmerMenu from './ShimmerMenu';
-import { CDN_URL } from '../utils/constant';
+import { CDN_URL } from '../src/utils/constant';
 import { FiClock } from 'react-icons/fi';
 import { AiOutlineStar } from 'react-icons/ai';
 

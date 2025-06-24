@@ -72,6 +72,7 @@ const Body = () => {
             placeholder="Find your flavor..."
             type="text"
             value={searchText}
+            data-testid = "searchInput"
             onChange={(e) => setSearchText(e.target.value)} // Update searchText state on input change
           />
           <button
