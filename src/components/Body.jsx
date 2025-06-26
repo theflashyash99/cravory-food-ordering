@@ -62,7 +62,7 @@ const Body = () => {
   }
 
   return (
-    <div className="body mt-28 mb-3  ">
+    <div className="body mt-28 mb-3  ">  
       {/* Filter Section */}
       <div className="filter flex justify-center h-25 m-[-20px] ">
         {/* Search Container */}

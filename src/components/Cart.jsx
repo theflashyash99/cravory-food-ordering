@@ -33,7 +33,7 @@ const Cart = () => {
           {cartItems.map((item) => (
             <div
               key={item.id || Math.random()}
-              className="flex items-center space-x-4 bg-white p-4 rounded shadow"
+              className="flex items-center space-x-4 bg-white p-4 rounded shadow data-testid='foodItemInCart'"
             >
               <img
                 src={item.image}

@@ -23,7 +23,7 @@ const RestaurantCategory = ({ data }) => {
         </p>
       </div>
 
-      <div className=" ">
+      <div className=" data-testid='foodItemInCart'">
         <div className="w-44 rounded-md h-24 mt-4 overflow-hidden object-fill   shadow-lg  ">
           <img src={data.image} />
         </div>
