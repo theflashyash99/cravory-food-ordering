@@ -91,30 +91,28 @@ const Body = () => {
           </button>
 
        </div>
-        <div className="p-4 m-4 mx-[-55px] ">
-          <div className="  bg-green-100 px-2 m-2  items-center justify-center flex rounded-lg h-10 bg-yellow-300 ">
-            <button
-              onClick={() => {
-                // Filter restaurants with a star rating greater than 4
-                const filteredList = resList.filter((res) => res.star > 4);
-                setRestaurants(filteredList); // Update the complete list
-                setFilteredRestaurants(filteredList); // Update the filtered list
-              }}
-            >
-              Top Rated Restaurants
-            </button>
-          </div>
-          <div>
-          <input
-            className="search-input border border-solid border-black rounded-lg h-8  px-6 justify-start"
-            placeholder="Change User Name"
-            type="text"
-            value={loggedInUser}
-            onChange={(e) => setUserName(e.target.value)} // Update searchText state on input change
-          />
-          </div>
+       <div className="p-4 m-4 mx-[-55px]">
+  <div className="bg-white p-4 rounded -mt-2 flex flex-col md:flex-row md:items-center md:space-x-4 space-y-4 md:space-y-0">
+    <button
+      className="flex-1 px-4 bg-yellow-300 py-2 rounded hover:bg-yellow-400 text-center"
+      onClick={() => {
+        const filteredList = resList.filter((res) => res.star > 4);
+        setRestaurants(filteredList);
+        setFilteredRestaurants(filteredList);
+      }}
+    >
+      Top Rated Restaurants
+    </button>
+    <input
+      className="flex-1 border border-black rounded-lg h-8 px-6"
+      placeholder="Change User Name"
+      type="text"
+      value={loggedInUser}
+      onChange={(e) => setUserName(e.target.value)}
+    />
+  </div>
+</div>
 
-        </div>
 
         {/* Top Rated Restaurants Filter */}
       </div>
@@ -167,4 +165,4 @@ const Body = () => {
   );
 };
 
-export default Body;
+export default Body;  

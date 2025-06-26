@@ -5,10 +5,12 @@ import UserClass from './UserClass'
 const About = () => {
   return (
     <>
-    <div className='mt-28'>
+    <div className='m-80'>
     {/* <User/> */}
     <UserClass name={"Yash Jaiswal"} location={"Gorakhpur"} contact={"@theflashyash99"}/>
+     {/* here the userclass class based componet is  */}
     </div>
+   
     </>
   )
 }
