@@ -45,6 +45,7 @@ it("Should load restaurant Menu Components", async () => {
  expect(screen.getByText("Cart - (1 items)")).toBeInTheDocument();
  fireEvent.click(addBtns[0]);
  expect(screen.getByText("Cart - (2 items)")).toBeInTheDocument();
+ //try more
 
 
 
