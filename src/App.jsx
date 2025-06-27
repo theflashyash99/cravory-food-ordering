@@ -8,9 +8,10 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import Cart from "./components/Cart";
 import RestaurantMenu from "./components/RestaurantMenu";
-import UserContext from "./utils/userContext";
+import UserContext from "./utils/UserContext";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
+import Footer from "./components/Footer"; 
 // import Grocery from "./components/Grocery";
 
 const Grocery = lazy(() => import("./components/Grocery"));
@@ -34,6 +35,7 @@ const AppLayout = () => {
         <Header />
         <Outlet />
       </div>
+       <Footer />
     </UserContext.Provider>
     </Provider>
   );

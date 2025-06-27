@@ -6,7 +6,7 @@ class AboutUs extends React.Component {
     userInfo: {
       name: "Username",
       location: "Default",
-      avatar_url: "http://dummy-photo.com",
+      avatar_url: "https://via.placeholder.com/150",
       bio: "This is a short bio. I'm passionate about coding, design, and open-source.",
       followers: 0,
       following: 0,
@@ -15,19 +15,24 @@ class AboutUs extends React.Component {
   };
 
   async componentDidMount() {
-    const res = await fetch("https://api.github.com/users/theflashyash99");
-    const json = await res.json();
-    this.setState({
-      userInfo: {
-        name: json.name || json.login,
-        location: json.location,
-        avatar_url: json.avatar_url,
-        bio: json.bio,
-        followers: json.followers,
-        following: json.following,
-        public_repos: json.public_repos,
-      },
-    });
+    try {
+      const res = await fetch("https://api.github.com/users/theflashyash99");
+      const json = await res.json();
+
+      this.setState({
+        userInfo: {
+          name: json.name || json.login || "N/A",
+          location: json.location || "N/A",
+          avatar_url: json.avatar_url || "https://via.placeholder.com/150",
+          bio: json.bio || "No bio available.",
+          followers: json.followers || 0,
+          following: json.following || 0,
+          public_repos: json.public_repos || 0,
+        },
+      });
+    } catch (error) {
+      console.error("Failed to fetch GitHub user:", error);
+    }
   }
 
   render() {
@@ -42,37 +47,44 @@ class AboutUs extends React.Component {
     } = this.state.userInfo;
 
     return (
-      <section className="mt-24 max-w-2xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
-        <div className="flex flex-col items-center p-8 sm:flex-row sm:items-start ">
+      <section className="mt-24 mx-4 sm:mx-auto max-w-3xl bg-white shadow-lg rounded-xl overflow-hidden">
+        <div className="flex flex-col sm:flex-row items-center sm:items-start p-6 sm:p-8">
+          {/* Avatar */}
           <img
             src={avatar_url}
-            alt={name}
-            className="w-32 h-32 rounded-full border-4 border-indigo-500"
+            alt={`${name}'s avatar`}
+            className="w-28 h-28 sm:w-32 sm:h-32 rounded-full border-4 border-indigo-500 object-cover"
           />
-          <div className="mt-6 text-center sm:mt-0 sm:ml-6 sm:text-left">
-            <h2 className="text-2xl font-bold text-gray-800">{name}</h2>
-            {location && <p className="text-indigo-600">{location}</p>}
-            {bio && <p className="mt-2 text-gray-600">{bio}</p>}
-            <div className="mt-4 flex justify-center sm:justify-start space-x-4">
+
+          {/* User Info */}
+          <div className="mt-6 sm:mt-0 sm:ml-6 text-center sm:text-left w-full">
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-800">{name}</h2>
+            <p className="text-indigo-600 text-sm">{location}</p>
+            <p className="mt-2 text-sm text-gray-600 leading-relaxed">{bio}</p>
+
+            {/* Stats */}
+            <div className="mt-4 flex justify-center sm:justify-start gap-6">
               <div className="text-center">
-                <span className="font-semibold">{followers}</span>
+                <p className="text-lg font-semibold">{followers}</p>
                 <p className="text-sm text-gray-500">Followers</p>
               </div>
               <div className="text-center">
-                <span className="font-semibold">{following}</span>
+                <p className="text-lg font-semibold">{following}</p>
                 <p className="text-sm text-gray-500">Following</p>
               </div>
               <div className="text-center">
-                <span className="font-semibold">{public_repos}</span>
+                <p className="text-lg font-semibold">{public_repos}</p>
                 <p className="text-sm text-gray-500">Repos</p>
               </div>
             </div>
-            <div className="mt-6 flex justify-center sm:justify-start space-x-4">
+
+            {/* Social Links */}
+            <div className="mt-6 flex justify-center sm:justify-start gap-4 text-sm">
               <a
                 href="https://github.com/theflashyash99"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 hover:text-gray-800"
+                className="text-gray-600 hover:text-gray-800 flex items-center"
               >
                 🐙 GitHub
               </a>
@@ -80,7 +92,7 @@ class AboutUs extends React.Component {
                 href="https://www.linkedin.com/in/yash-jaiswal-664588231"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-indigo-600 hover:underline"
+                className="text-indigo-600 hover:text-indigo-800 flex items-center"
               >
                 💼 LinkedIn
               </a>

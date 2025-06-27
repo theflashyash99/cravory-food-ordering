@@ -5,7 +5,7 @@ const RestaurantCard = (props) => {
 
   return (
     <div
-      className="res-card m-2 mr-0 ml-0  mb-[-8px] p-4 w-[250px] rounded-lg  h-[350px] border-8 border-solid border-white    "
+      className="w-60 h-80 p-2 sm:w-64 bg-white  rounded-lg overflow-hidden hover:scale-105 transition-transform duration-300"
       style={style}
     >
       <img

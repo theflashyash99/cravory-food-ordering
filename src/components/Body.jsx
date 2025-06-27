@@ -1,168 +1,145 @@
 import { useState, useEffect, useContext } from "react";
-import resList from "../../API file/restList"; // Original list of restaurants
-import shuffledResList from "../../API file/shuffledResList"; // Shuffled list for display
-import RestaurantCard, {withPromotedLabel}  from "./RestaurantCard"; // Component to display individual restaurant details
-import Shimmer from "./Shimmer"; // Loading placeholder component
+import resList from "../../API file/restList";
+import shuffledResList from "../../API file/shuffledResList";
+import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
+import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import DinoGame from "react-chrome-dino";
-import UserContext from "../utils/userContext";
+import UserContext from "../utils/UserContext";
+
+const ITEMS_PER_PAGE = 12;
 
 const Body = () => {
-  // State to hold the complete list of restaurants (for the filter)
   const [restaurants, setRestaurants] = useState([]);
-
-  // State to hold the search input value
   const [searchText, setSearchText] = useState("");
-
-  // State to hold the filtered list based on search or filters (for UI update)
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1); // new
 
-  // higher order component
-  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard); 
+  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
 
-  // useEffect to simulate data fetching on component mount
   useEffect(() => {
     const timer = setTimeout(() => {
-      // Set both the complete and filtered restaurant lists after 2 seconds
       setRestaurants(shuffledResList);
       setFilteredRestaurants(shuffledResList);
     }, 2000);
-
-    // Cleanup the timer when the component unmounts
     return () => clearTimeout(timer);
   }, []);
 
-  // Conditional rendering: show Shimmer component while data is loading
-
   const onlineStatus = useOnlineStatus();
+  const { loggedInUser, setUserName } = useContext(UserContext);
 
-  if (onlineStatus === false)
+  const totalPages = Math.ceil(filteredRestaurants.length / ITEMS_PER_PAGE);
+  const startIdx = (currentPage - 1) * ITEMS_PER_PAGE;
+  const endIdx = startIdx + ITEMS_PER_PAGE;
+  const paginatedRestaurants = filteredRestaurants.slice(startIdx, endIdx);
+
+  const handleSearch = () => {
+    const filteredRes = restaurants.filter((res) =>
+      res.name?.toLowerCase().includes(searchText.toLowerCase())
+    );
+    setFilteredRestaurants(filteredRes);
+    setCurrentPage(1); // reset to first page
+  };
+
+  if (onlineStatus === false) {
     return (
-      <>
-        <h1 className="mt-32 flex justify-center font-sans font-bold">
-          Look like you're offline!! Please check your internet connection.
+      <div className="mt-32 px-4">
+        <h1 className="text-center font-bold text-xl mb-4">
+          Looks like you're offline! Please check your internet connection.
         </h1>
-        <div className="border border-solid border-black border-dotted m-16">
+        <div className="border border-dotted border-black m-4 p-4">
           <DinoGame />
         </div>
-        <div>
-          <h1 className="flex justify-center font-bold text-xl  mb-10">
-            {" "}
-            Press Space to Play!!!
-          </h1>
-        </div>
-      </>
+        <h1 className="text-center font-bold text-xl mt-4">
+          Press Space to Play!!!
+        </h1>
+      </div>
     );
-
-    const {loggedInUser , setUserName} = useContext(UserContext);
-
-  if (restaurants.length === 0) {
-    return <Shimmer />;
   }
 
+  if (restaurants.length === 0) return <Shimmer />;
+
   return (
-    <div className="body mt-28 mb-3  ">  
-      {/* Filter Section */}
-      <div className="filter flex justify-center h-25 m-[-20px] ">
-        {/* Search Container */}
-        <div className="search-container m-4 p-4">
+    <div className="mt-28 mb-8 px-4 sm:px-8">
+      {/* Search & Filters */}
+      <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0 lg:space-x-6 mb-6">
+        <div className="flex flex-col sm:flex-row items-center w-full lg:w-auto gap-2">
           <input
-            className="search-input border border-solid border-black rounded-lg h-8  px-36 justify-start"
+            className="border border-black rounded-lg h-10 px-4 w-full sm:w-72"
             placeholder="Find your flavor..."
             type="text"
             value={searchText}
-            data-testid = "searchInput"
-            onChange={(e) => setSearchText(e.target.value)} // Update searchText state on input change
+            data-testid="searchInput"
+            onChange={(e) => setSearchText(e.target.value)}
           />
           <button
-            className="search-btn px-2  m-2  h-10  mr-10 bg-green-200  rounded-lg  "
-            onClick={() => {
-              // Filter restaurants based on the search text restaurant to filter from all and setFilteredRestaurant to to set the filter value in filter
-              const filteredRes = restaurants.filter(
-                (res) =>
-                  res.name &&
-                  res.name.toLowerCase().includes(searchText.toLowerCase())
-              );
-              setFilteredRestaurants(filteredRes); // Update the filtered list
-            }}
+            className="bg-green-200 hover:bg-green-300 px-4 py-2 rounded-lg"
+            onClick={handleSearch}
           >
             Search
           </button>
+        </div>
 
-       </div>
-       <div className="p-4 m-4 mx-[-55px]">
-  <div className="bg-white p-4 rounded -mt-2 flex flex-col md:flex-row md:items-center md:space-x-4 space-y-4 md:space-y-0">
-    <button
-      className="flex-1 px-4 bg-yellow-300 py-2 rounded hover:bg-yellow-400 text-center"
-      onClick={() => {
-        const filteredList = resList.filter((res) => res.star > 4);
-        setRestaurants(filteredList);
-        setFilteredRestaurants(filteredList);
-      }}
-    >
-      Top Rated Restaurants
-    </button>
-    <input
-      className="flex-1 border border-black rounded-lg h-8 px-6"
-      placeholder="Change User Name"
-      type="text"
-      value={loggedInUser}
-      onChange={(e) => setUserName(e.target.value)}
-    />
-  </div>
-</div>
-
-
-        {/* Top Rated Restaurants Filter */}
+        <div className="flex flex-col sm:flex-row gap-4 items-center w-full lg:w-auto">
+          <button
+            className="bg-yellow-300 hover:bg-yellow-400 px-4 py-2 rounded-lg w-full sm:w-auto"
+            onClick={() => {
+              const filteredList = resList.filter((res) => res.star > 4);
+              setRestaurants(filteredList);
+              setFilteredRestaurants(filteredList);
+              setCurrentPage(1); // reset page on filter
+            }}
+          >
+            Top Rated Restaurants
+          </button>
+          <input
+            className="border border-black rounded-lg h-10 px-4 w-full sm:w-72"
+            placeholder="Change User Name"
+            type="text"
+            value={loggedInUser}
+            onChange={(e) => setUserName(e.target.value)}
+          />
+        </div>
       </div>
 
-      {/* Restaurant Cards Container */}
-      
-      <div className="res-container flex flex-wrap  justify-center rounded-lg  ">
-        {filteredRestaurants.map((res) => (
-          <Link to="/restaurant/:resId" key={res.id}>
-
-           {
-             res.promoted ? ( <RestaurantCardPromoted 
-              key={res.id}
-              name={res.name}
-              cuisine={
-                Array.isArray(res.cuisine)
-                  ? res.cuisine.join(", ")
-                  : res.cuisine
-              }
-              star={res.star}
-              time={res.time}
-              img={res.img}
-              alt={res.alt}
-            />) :
-
-             ( <RestaurantCard
-              key={res.id}
-              name={res.name}
-              cuisine={
-                Array.isArray(res.cuisine)
-                  ? res.cuisine.join(", ")
-                  : res.cuisine
-              }
-              star={res.star}
-              time={res.time}
-              img={res.img}
-              alt={res.alt}
-            />)
-
-
-
-
-           }
-          
-           
+      {/* Restaurant Cards */}
+      <div className="flex flex-wrap justify-center gap-6">
+        {paginatedRestaurants.map((res) => (
+          <Link to={`/restaurant/${res.id}`} key={res.id}>
+            {res.promoted ? (
+              <RestaurantCardPromoted {...res} />
+            ) : (
+              <RestaurantCard {...res} />
+            )}
           </Link>
         ))}
       </div>
+
+      {/* Pagination Controls */}
+      {totalPages > 1 && (
+        <div className="mt-8 flex justify-center items-center gap-4 text-sm font-medium">
+          <button
+            className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50"
+            disabled={currentPage === 1}
+            onClick={() => setCurrentPage((prev) => prev - 1)}
+          >
+            ← Prev
+          </button>
+          <span>
+            Page {currentPage} of {totalPages}
+          </span>
+          <button
+            className="px-3 py-1 bg-red-500 rounded disabled:opacity-50"
+            disabled={currentPage === totalPages}
+            onClick={() => setCurrentPage((prev) => prev + 1)}
+          >
+            Next →
+          </button>
+        </div>
+      )}
     </div>
   );
 };
 
-export default Body;  
+export default Body;

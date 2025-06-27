@@ -8,37 +8,43 @@ const RestaurantCategory = ({ data }) => {
     dispatch(addItems(data));
     console.log(data);
   };
-  return (
-    <div className="flex">
-      <div className=" w-[500]  m-auto my-4 bg-gray-50 shadow-lg p-4">
-        <span className="font-bold">{data.name}</span>
-        <h3> ₹{data.price}</h3>
-        <h2>⭐({data.rating})</h2>
-        <p className=" font-thin text-xs">
-          {" "}
-          🍽️ Order from here the best food in town – handpicked just for your
-          cravings!
-          <br />
-          From sizzling Tandoori delights to creamy Paneer Butter.
-        </p>
-      </div>
 
-      <div className=" data-testid='foodItemInCart'">
-        <div className="w-44 rounded-md h-24 mt-4 overflow-hidden object-fill   shadow-lg  ">
-          <img src={data.image} />
+  return (
+    <div className="p-3 px-6 flex justify-center">
+      <div className="flex flex-col sm:flex-row max-w-md w-full bg-white rounded-lg shadow-md overflow-hidden">
+        
+        {/* Left Section: Info */}
+        <div className="flex-1 p-3 flex flex-col justify-between">
+          <div>
+            <h2 className="text-lg font-semibold mb-1">{data.name}</h2>
+            <p className="text-gray-700 text-sm">₹{data.price}</p>
+            <p className="text-yellow-600 font-medium text-sm">⭐ {data.rating}</p>
+            <p className="text-xs text-gray-500 mt-2">
+              🍽️ Order from here the best food in town – handpicked just for your cravings!<br />
+              From sizzling Tandoori delights to creamy Paneer Butter.
+            </p>
+          </div>
+
+          <button
+            onClick={() => handleAddItem(data)}
+            className="mt-4 bg-green-500 hover:bg-green-600 text-white text-sm font-bold py-1.5 px-4 rounded self-start"
+            data-testid="foodItemInCart"
+          >
+            Add to Cart
+          </button>
         </div>
-        <button
-          className=" shadow-xl rounded-lg font-bold text-white bg-green-500 border border-solid p-1 absolte px-[42px] py-2 "
-          onClick={() => handleAddItem(data)}
-        >
-          Add to Cart!
-        </button>
+
+        {/* Right Section: Image */}
+        <div className="w-full sm:w-40 h-40 sm:h-auto">
+          <img
+            src={data.image}
+            alt={data.name}
+            className="w-full h-full object-cover"
+          />
+        </div>
       </div>
     </div>
   );
 };
-
-{
-}
 
 export default RestaurantCategory;

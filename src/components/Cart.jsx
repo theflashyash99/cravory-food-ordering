@@ -12,7 +12,7 @@ const Cart = () => {
   };
 
   return (
-    <div className="mt-24 m-4 p-4 max-w-4xl mx-auto">
+    <div className="mt-24 h-96 m-4 p-4 max-w-4xl mx-auto">
       <h1 className="text-center font-bold text-2xl mb-6">Your Cart</h1>
       <div className="flex justify-center m-2 ">
         <button

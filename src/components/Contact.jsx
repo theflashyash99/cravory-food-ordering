@@ -19,7 +19,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-6 lg:px-20 mt-24">
+    <div className="min-h-screen justify-center bg-gray-50 py-12 px-6 lg:px-20  -mt-12">
       <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden lg:flex mt-36">
         {/* Sidebar */}
         <div className="lg:w-1/2 bg-indigo-600 text-white p-8">
