@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart } from "../utils/cartSlice";
+import { toast } from "react-toastify";
 
 const Cart = () => {
   const cartItems = useSelector((store) => store.cart.items);
@@ -9,6 +10,7 @@ const Cart = () => {
 
   const handleClearCart = () => {
     dispatch(clearCart());
+     toast.success(` Cart is cleared!`);
   };
 
   return (

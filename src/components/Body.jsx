@@ -22,7 +22,7 @@ const Body = () => {
     const timer = setTimeout(() => {
       setRestaurants(shuffledResList);
       setFilteredRestaurants(shuffledResList);
-    }, 2000);
+    }, 10);
     return () => clearTimeout(timer);
   }, []);
 
