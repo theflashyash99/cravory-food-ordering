@@ -10,8 +10,13 @@ const cartSlice = createSlice({
       state.items.push(action.payload);
     },
     removeItem: (state, action) => {
-      state.items.pop();
-    },
+  const nameToRemove = action.payload.name;
+  const index = state.items.findIndex(item => item.name === nameToRemove);
+
+  if (index !== -1) {
+    state.items.splice(index, 1); // remove only the first match
+  }
+},
     clearCart: (state, action) => {
       state.items.length = 0;
     },
