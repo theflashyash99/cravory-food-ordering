@@ -38,7 +38,7 @@ const Cart = () => {
         <div className="space-y-4">
           {cartItems.map((item) => (
             <div
-              key={item.id || item.random}
+              key={item.id ? item.id : Math.random().toString(36).substr(2, 9)}
               className="flex items-center justify-between bg-white p-4 rounded shadow"
               data-testid="foodItemInCart"
             >
