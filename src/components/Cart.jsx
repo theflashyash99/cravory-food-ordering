@@ -17,17 +17,28 @@ const Cart = () => {
     toast.info(`${item.name} removed from cart`);
   };
 
+  const totalAmount = cartItems.reduce((total, item) => total + item.price, 0);
+
   return (
     <div className="mt-24 m-4 p-4 max-w-4xl mx-auto">
       <h1 className="text-center font-bold text-2xl mb-6">Your Cart</h1>
 
-      <div className="flex justify-center m-2">
+      <div className="flex justify-center m-2 gap-4">
         <button
           className="border border-solid p-2 rounded-md text-white bg-black"
           onClick={handleClearCart}
         >
           Clear Cart!
         </button>
+
+        {cartItems.length > 0 && (
+          <button
+            className="border border-solid p-2 rounded-md text-white bg-green-600 hover:bg-green-700"
+            onClick={() => toast.success("Proceeding to checkout...")}
+          >
+            Checkout ₹{totalAmount.toFixed(2)}
+          </button>
+        )}
       </div>
 
       {cartItems.length === 0 ? (
